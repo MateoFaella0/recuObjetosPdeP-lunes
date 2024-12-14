@@ -111,12 +111,6 @@ const tunica1 = new Tunica (poderBase = 100)
 const mago1 = new Mago (poderInnato = 8, artefactos = #{amuleto, ojota, tunica1}, nombre="jorge", categoria = aprendiz, resistenciaMagica = 50, reservaEnergia = 10)
 const mago2 = new Mago (poderInnato = 9, artefactos = #{amuleto}, nombre="matias", categoria = veterano, resistenciaMagica = 30, reservaEnergia = 50)
 const gremio1 = new Gremio(miembros = #{mago1, mago2})// creacion de gremio, falla si hay menos de 2 magos
-const gremio2 = new Gremio(miembros = #{mago3, mago4})
-
-const mago3 = new Mago (poderInnato = 9, artefactos = #{amuleto}, nombre="matias", categoria = veterano, resistenciaMagica = 300, reservaEnergia = 50)
-const mago4 = new Mago (poderInnato = 9, artefactos = #{amuleto}, nombre="matias", categoria = veterano, resistenciaMagica = 300, reservaEnergia = 50)
-
-const gremio3 = new Gremio(miembros = #{gremio2, mago2})
 
 // si los miembros llegaran a estar compuestos por gremios y magos, habria que cambiar la logica ya que segun mi modelo, me devolveria
 // que el lider de un gremio es el gremio, en lugar del lider de dicho gremio. Para arreglar esto se podria validar que el lider del gremio sea un mago
