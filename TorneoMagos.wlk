@@ -21,7 +21,7 @@ class Mago{
 
     method categoria(nuevaCategoria) { categoria = nuevaCategoria}
     method esVencido(poderEnemigo) = categoria.esVencido(poderEnemigo, resistenciaMagica)
-    method energiaPerdida() = categoria.energiaAPerder()
+    method energiaPerdida() = categoria.energiaAPerder(reservaEnergia)
     method perderEnergia() { self.perderEnergia(self.energiaPerdida()) }
     method perderEnergia(valor) { reservaEnergia -= valor }
     method ganarEnergia(valor) { reservaEnergia += valor }
@@ -66,17 +66,17 @@ class Gremio{
 
 object aprendiz{
     method esVencido(poder, resistencia) = resistencia < poder
-    method resistenciaAPerder(resistencia) = resistencia/2
+    method energiaAPerder(energia) = energia/2
 }
 
 object veterano{
     method esVencido(poder, resistencia) = resistencia * 1.5 <= poder
-    method resistenciaAPerder(resistencia) = resistencia/4
+    method energiaAPerder(energia) = energia/4
 }
 
 object inmortal{
     method esVencido(poder, resistencia) = false
-    method resistenciaAPerder(resistencia) = 0
+    method energiaAPerder(energia) = 0
 }
 
 // ----- Objetos Magicos ---------
@@ -112,6 +112,6 @@ const mago1 = new Mago (poderInnato = 8, artefactos = #{amuleto, ojota, tunica1}
 const mago2 = new Mago (poderInnato = 9, artefactos = #{amuleto}, nombre="matias", categoria = veterano, resistenciaMagica = 30, reservaEnergia = 50)
 const gremio1 = new Gremio(miembros = #{mago1, mago2})// creacion de gremio, falla si hay menos de 2 magos
 
-// si los miembros llegaran a estar compuestos por gremios y magos, habria que cambiar la logica ya que segun mi modelo, me devolveria
-// que el lider de un gremio es el gremio, en lugar del lider de dicho gremio. Para arreglar esto se podria validar que el lider del gremio sea un mago
-// y si no lo es buscar el lider de su gremio hasta que el resultado sea un mago.
+// B.3) si los miembros llegaran a estar compuestos por gremios y magos, habria que cambiar la logica ya que segun mi modelo, me 
+//devolveria que el lider de un gremio es el gremio, en lugar del lider de dicho gremio. Para arreglar esto se podria validar que
+// el lider del gremio sea un mago y si no lo es buscar el lider de su gremio hasta que el resultado sea un mago.
